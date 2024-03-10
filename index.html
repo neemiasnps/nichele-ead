@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./scripts/jquery.js"></script>
+	<script src="./scripts/mustache.js"></script>
+	<script src="./scripts/parseCourseData.js"></script>
+	<script src="./scripts/main.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="styles/stylesheets/style.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0 maximum-scale=1.0" />
+</head>
+<body>
+
+	<iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="" frameborder="0"></iframe>
+
+	<script type="text/html" id="courseTree">
+		<div id="menu" data-state="open">
+			<div class="bt"></div>			
+			<div id="menuWrapper">				
+        <h1>{{name}}</h1>
+				<ul class="courseMenu">				
+					{{#children}}
+						<li class="{{#hasContent}}scoContent{{/hasContent}}" data-id="{{id}}" > 
+							<a> {{ name }} </a>					
+						</li>
+						{{ > recurse }}
+					{{/children}}
+					{{^children}}
+						<li class="empty"> Este curso não tem aulas para exibir </li>
+					{{/children}}
+				</ul>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/html" id="recursiveTree">
+		<ul class="scos">
+			{{#children}}
+				<li class="{{#hasContent}}scoContent{{/hasContent}}" data-id="{{id}}"> 
+					<a> {{ name }} </a>					
+				</li>
+				{{ > recurse }}
+			{{/children}}
+		</ul>
+	</script>
+	
+	<!-- var data = //saida da rota /api/courses/54d4e25f1108f1712a00000a?show=complete -->
+  
+                                  <script> var data = {"_id":"5a785d78219219e75779c789","createdAt":"2018-02-05T13:34:48.050Z","updatedAt":"2018-02-23T18:07:45.434Z","name":"Água Fria","tree":[{"id":"5a785d9e219219e75779c78d","name":"Bom jogo!","_sco_type_id":"589c98cc7db76f33ed43b8ff","hasContent":true,"isBooted":false,"isCompleted":false,"scoGamification":{"interface":{"voltar":true,"progresso":true,"indice":true,"avancar":true,"ajuda":true},"enabled":false},"slideAnimation":null,"scoStyle":"default"}],"_theme_id":"5895f6566ca680552ca411bc","code":"GAME ATM","description":"","objective":"","treeLocked":false,"editionLocked":false,"tags":[""],"_user_id":[],"applTracking":{"active":false,"idMethod":"cpf"},"scorm":true,"certificate":false,"published":false,"active":true,"_pattern_id":"padrao1","status":"editing"};</script>
+                                 
+ 
+</body>
+</html>
